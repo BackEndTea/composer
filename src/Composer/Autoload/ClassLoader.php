@@ -495,6 +495,10 @@ class ClassLoader
         // PSR-4 lookup
         $logicalPathPsr4 = strtr($class, '\\', DIRECTORY_SEPARATOR) . $ext;
 
+        if ('' === $class) {
+            return false;
+        }
+
         $first = $class[0];
         if (isset($this->prefixLengthsPsr4[$first])) {
             $subPath = $class;

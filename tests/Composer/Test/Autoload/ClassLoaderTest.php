@@ -37,6 +37,12 @@ class ClassLoaderTest extends TestCase
         $this->assertTrue(class_exists($class, false), "->loadClass() loads '$class'");
     }
 
+    public function testWillNotErrorOnLoadingBadClass()
+    {
+        $loader = new ClassLoader();
+        self::assertNull($loader->loadClass('\\'));
+    }
+
     /**
      * Provides arguments for ->testLoadClass().
      *
